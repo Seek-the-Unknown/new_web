@@ -3,17 +3,36 @@ package model;
 
 import java.util.Date;
 
+/**
+ * 租赁记录实体类
+ * 表示房屋租赁的交易信息，包含关联的房屋和用户对象
+ */
 public class Rental {
+    /** 租赁记录唯一标识 */
     private int id;
+    
+    /** 关联的房屋ID */
     private int houseId;
+    
+    /** 承租人用户名 */
     private String username;
+    
+    /** 租赁日期 */
     private Date rentalDate;
 
-    // ���Զ������House��User�����Ա���ҳ������ʾ���ḻ����Ϣ
+    /**
+     * 关联的房屋对象（通过houseId关联）
+     * 通过HouseDAO.findById(int)方法获取完整房屋信息
+     */
     private House house;
+    
+    /**
+     * 关联的用户对象（通过username关联）
+     * 通过UserDao.findByUsername(String)方法获取用户详细信息
+     */
     private User user;
 
-    // ���캯����Getter��Setter...
+
     public Rental() {}
 
     public int getId() { return id; }

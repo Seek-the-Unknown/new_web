@@ -5,7 +5,9 @@
       <map>
         <entry key="file://$PROJECT_DIR$/web/WEB-INF/main.jsp" value="file://$PROJECT_DIR$/web/WEB-INF" />
         <entry key="file://$PROJECT_DIR$/web/admin/manage-houses.jsp" value="file://$PROJECT_DIR$/web/admin" />
+        <entry key="file://$PROJECT_DIR$/web/forgotPassword.jsp" value="file://$PROJECT_DIR$/web" />
         <entry key="file://$PROJECT_DIR$/web/index.jsp" value="file://$PROJECT_DIR$/web" />
+        <entry key="file://$PROJECT_DIR$/web/jspf/header.jspf" value="file://$PROJECT_DIR$/web/jspf" />
         <entry key="file://$PROJECT_DIR$/web/main.jsp" value="file://$PROJECT_DIR$/web" />
         <entry key="file://$PROJECT_DIR$/web/rental/detail.jsp" value="file://$PROJECT_DIR$/web/rental" />
         <entry key="file://$PROJECT_DIR$/web/rental/index.jsp" value="file://$PROJECT_DIR$/web/rental" />

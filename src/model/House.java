@@ -260,6 +260,10 @@ public class House {
         isRented = rented;
     }
 
+    /**
+     * 设置SQL时间戳格式的发布时间
+     * @param timestamp 数据库时间戳
+     */
     public void setPostDate(java.sql.Timestamp timestamp) {
         if (timestamp != null) {
             this.postDate = timestamp.toLocalDateTime();

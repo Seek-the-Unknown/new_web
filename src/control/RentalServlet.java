@@ -2,9 +2,13 @@
 package control;
 
 import dao.*;
+import model.House;
 import model.Rental;
 import model.User;
 import dao.RentalDAOImpl;
+import service.UserService;
+import service.UserServiceImp;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,40 +21,47 @@ import java.io.IOException;
 public class RentalServlet extends HttpServlet {
     private final RentalDAO rentalDAO = new RentalDAOImpl();
     private final HouseDAO houseDAO = new HouseDAOImpl();
+    private final UserService userService = new UserServiceImp();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
 
-        // 1. ¼ì²éÓÃ»§ÊÇ·ñµÇÂ¼
         if (session == null || session.getAttribute("currentUser") == null) {
             response.sendRedirect(request.getContextPath() + "/index.jsp?error=notLoggedIn");
             return;
         }
 
         try {
-            // 2. »ñÈ¡²ÎÊı
+            //
             int houseId = Integer.parseInt(request.getParameter("houseId"));
             User currentUser = (User) session.getAttribute("currentUser");
 
-            // 3. ´´½¨×âÁŞ¼ÇÂ¼
+
             Rental rental = new Rental();
             rental.setHouseId(houseId);
             rental.setUsername(currentUser.getUsername());
             rental.setRentalDate(new java.util.Date());
             rentalDAO.addRental(rental);
 
-            // 4. ¸üĞÂ·¿Ô´×´Ì¬Îª¡°ÒÑ×â¡±
             houseDAO.updateHouseRentalStatus(houseId, true);
 
-            // 5. ÖØ¶¨Ïòµ½³É¹¦Ò³Ãæ»òÓÃ»§¸öÈËÖĞĞÄ
-            // ÕâÀïÎÒÃÇÏÈ¼òµ¥µØÖØ¶¨Ïò»ØÊ×Ò³£¬²¢´øÉÏ³É¹¦ÌáÊ¾
+            try {
+                House rentedHouse = houseDAO.findHouseById(houseId); // è·å–è¢«ç§Ÿçš„æˆ¿æºä¿¡æ¯
+                if (rentedHouse != null) {
+                    userService.updateUserBalance(rentedHouse.getUsername(), rentedHouse.getPrice());
+                    System.out.println("å·²å°† " + rentedHouse.getPrice() + "å…ƒ è½¬å…¥ç”¨æˆ· " + rentedHouse.getUsername() + " çš„è´¦æˆ·ã€‚");
+                }
+            } catch(Exception e) {
+                e.printStackTrace(); // å…¥è´¦å¤±è´¥åªè®°å½•æ—¥å¿—ï¼Œä¸å½±å“ç§Ÿèµæµç¨‹
+            }
+
             response.sendRedirect(request.getContextPath() + "/?rent=success");
 
         } catch (NumberFormatException e) {
             response.sendRedirect(request.getContextPath() + "/rental/index.jsp?error=invalidHouseId");
         } catch (Exception e) {
-            // ¼ÇÂ¼Òì³£
+
             e.printStackTrace();
             response.sendRedirect(request.getContextPath() + "/rental/index.jsp?error=rentalFailed");
         }

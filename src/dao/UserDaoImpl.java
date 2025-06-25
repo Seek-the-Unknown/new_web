@@ -4,7 +4,7 @@ import model.User;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
-import util.DBUtil; // ¼ÙÉèÄúµÄDBUtilÀàÂ·¾¶ÕıÈ·
+import util.DBUtil; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DBUtilï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½È·
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,40 +12,29 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * UserDao ½Ó¿ÚµÄÊµÏÖÀà
- * Ê¹ÓÃ Apache Commons DBUtils ×é¼şÓëÊı¾İ¿â½øĞĞ½»»¥
- */
+
 public class UserDaoImpl implements UserDao {
 
-    // ´ÓÁ¬½Ó³Ø»ñÈ¡Êı¾İÔ´£¬´´½¨QueryRunner¶ÔÏó
+
     private final QueryRunner queryRunner = new QueryRunner(DBUtil.getDataSource());
 
-    /**
-     * »ñÈ¡ËùÓĞÓÃ»§ÁĞ±í
-     * @return °üº¬ËùÓĞÓÃ»§µÄÁĞ±í£¬Èç¹û·¢Éú´íÎó»òÃ»ÓĞÓÃ»§Ôò·µ»Ønull»ò¿ÕÁĞ±í
-     */
-    @Override
+
     public List<User> getUsersList() {
-        // ×¢Òâ£º¼ÙÉèÊı¾İ¿â±íÃûÎª 'users' ÇÒ°üº¬ÓëUserÄ£ĞÍ¶ÔÓ¦µÄÁĞ
+
         String sql = "SELECT username, password, email, gender, lastLoginTime FROM users";
         try {
-            // Ê¹ÓÃ BeanListHandler ½«½á¹û¼¯Ó³Éäµ½ User ¶ÔÏóµÄ List ÖĞ
+
             return queryRunner.query(sql, new BeanListHandler<>(User.class));
         } catch (SQLException e) {
-            e.printStackTrace(); // ÔÚÉú²ú»·¾³ÖĞ½¨ÒéÊ¹ÓÃÈÕÖ¾¿ò¼Ü¼ÇÂ¼´íÎó
-            return null; // »ò·µ»Ø Collections.emptyList();
+            e.printStackTrace();
+            return null;
         }
     }
 
-    /**
-     * ²åÈëÒ»¸öĞÂÓÃ»§
-     * @param user Òª²åÈëµÄUser¶ÔÏó
-     * @return Èç¹û²åÈë³É¹¦£¨Ó°ÏìĞĞÊı > 0£©£¬·µ»Ø true£¬·ñÔò·µ»Ø false
-     */
+
     @Override
     public boolean insertOneUser(User user) {
-        // SQLÓï¾äÖĞµÄ×Ö¶ÎĞèÒªºÍÊı¾İ¿â±í 'users' µÄÁĞÃûÍêÈ«¶ÔÓ¦
+
         String sql = "INSERT INTO users (username, password, email, gender, lastLoginTime) VALUES (?, ?, ?, ?, ?)";
         try {
             int affectedRows = queryRunner.update(sql,
@@ -61,26 +50,8 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    /**
-     * Ìí¼ÓÒ»¸öĞÂÓÃ»§ (void ·µ»ØÀàĞÍ)
-     * @param user ÒªÌí¼ÓµÄUser¶ÔÏó
-     */
-//    @Override
-//    public void addUser(User user) {
-//        // ÎªÁË±ÜÃâ´úÂëÖØ¸´£¬¿ÉÒÔÖ±½Óµ÷ÓÃÒÑ¾­ÊµÏÖµÄ insertOneUser ·½·¨²¢ºöÂÔÆä·µ»ØÖµ
-//        // »òÕß¿ÉÒÔÏñÏÂÃæÕâÑùÖØĞÂÊµÏÖÒ»±é
-//        String sql = "INSERT INTO users (username, password, email, gender, lastLoginTime) VALUES (?, ?, ?, ?, ?)";
-//        try {
-//            queryRunner.update(sql,
-//                    user.getUsername(),
-//                    user.getPassword(),
-//                    user.getEmail(),
-//                    user.getGender(),
-//                    user.getLastLoginTime());
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
+
     public  void addUser(User user) {
         String sql = "INSERT INTO users (username, password, email, gender, last_login_time) VALUES (?, ?, ?, ?, ?)";
 
@@ -88,47 +59,42 @@ public class UserDaoImpl implements UserDao {
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            // ÉèÖÃ²ÎÊı
             pstmt.setString(1, user.getUsername());
             pstmt.setString(2, user.getPassword());
             pstmt.setString(3, user.getEmail());
             pstmt.setString(4, user.getGender());
             pstmt.setTimestamp(5, Timestamp.valueOf(user.getLastLoginTime()));
 
-            // Ö´ĞĞ²åÈë
+
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows > 0) {
-                System.out.println("ÓÃ»§Ìí¼Ó³É¹¦");
+                System.out.println("ï¼šæ’å…¥æˆåŠŸ");
+
             }
         } catch (SQLException e) {
             handleSQLException(e);
         }
     }
     private void handleSQLException(SQLException e) {
-        System.err.println("SQL´íÎó:");
-        System.err.println("´íÎóÂë: " + e.getErrorCode());
-        System.err.println("SQL×´Ì¬: " + e.getSQLState());
-        System.err.println("´íÎóĞÅÏ¢: " + e.getMessage());
+        System.err.println("SQLé”™è¯¯:");
+        System.err.println("é”™è¯¯ç : " + e.getErrorCode());
+        System.err.println("SQLçŠ¶æ€: " + e.getSQLState());
+        System.err.println("é”™è¯¯ä¿¡æ¯: " + e.getMessage());
         e.printStackTrace();
     }
 
-    /**
-     * ¼ì²éÓÃ»§ÃûÊÇ·ñ´æÔÚ
-     * @param username Òª¼ì²éµÄÓÃ»§Ãû
-     * @return Èç¹û´æÔÚ£¬·µ»Ø true£¬·ñÔò·µ»Ø false
-     */
+
     @Override
     public boolean existsByUsername(String username) {
-        // Í¨¹ı²éÑ¯µ¥¸öÓÃ»§¶ÔÏóÊÇ·ñÎªnullÀ´ÅĞ¶ÏÓÃ»§ÊÇ·ñ´æÔÚ
-        // ½ö²éÑ¯Ò»¸ö×Ö¶Î£¨ÈçÖ÷¼ü»òÓÃ»§Ãû£©±È²éÑ¯ËùÓĞ×Ö¶Î£¨SELECT *£©¸ü¸ßĞ§
+
         String sql = "SELECT username FROM users WHERE username = ?";
         try {
-            // BeanHandler Èç¹û²éÑ¯²»µ½½á¹û»á·µ»Ø null
+
             User user = queryRunner.query(sql, new BeanHandler<>(User.class), username);
             return user != null;
         } catch (SQLException e) {
             e.printStackTrace();
-            // ³öÏÖÒì³£Ê±£¬±£ÊØµØ·µ»Øfalse£¬±íÊ¾ÎŞ·¨È·ÈÏÓÃ»§´æÔÚ
+
             return false;
         }
     }

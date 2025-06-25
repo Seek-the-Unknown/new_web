@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/src/control/AdminRentalServlet.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/control/HomeServlet.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/control/HouseDetailServlet.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/control/ImageServingServlet.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/control/RentalServlet.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/control/ResetPasswordServlet.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/dao/UserDaoImpl.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/filter/SensitiveWordValidationFilter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/model/Rental.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/sensitive-words.txt" charset="UTF-8" />
-    <file url="PROJECT" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

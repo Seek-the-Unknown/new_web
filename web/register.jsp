@@ -130,26 +130,9 @@
 
 </head>
 <body>
-<%--    <%--%>
-<%--//        产生一个随机数，作为令牌--%>
-<%--//        long number = new Random().nextInt(1999999)+System.currentTimeMillis();--%>
-<%--//        String token = number+"";--%>
-<%--    String token = TokenProcessor.getInstance().makeToken();--%>
-<%--    %>--%>
 
 
-<%--<form action="registerNewUser.jsp" method="post">--%>
-<%--    <h1>注册页面</h1>--%>
-<%--    用户名：<input type="text" name="uname" placeholder="请输入用户名"><br>--%>
-<%--    真实姓名：<input type="text" name="rname" placeholder="请输入真实"><br>--%>
-<%--    密码：<input type="password" name="password" placeholder="请输入密码"><br>--%>
-<%--    确认密码：<input type="password" name="password2" placeholder="请再次输入密码"><br>--%>
-<%--    用户角色：<input type="radio" name="role" value="Manager">管理员--%>
-<%--    <input type="radio" name="role" value="User">用户<br>--%>
-<%--    用户性别：<input type="radio" name="sex" value="1">男--%>
-<%--    <input type="radio" name="sex" value="0">女<br>--%>
-<%--    <input type="submit" value="注册">--%>
-<%--</form>--%>
+
 <div class="register-container">
     <h2>用户注册</h2>
 

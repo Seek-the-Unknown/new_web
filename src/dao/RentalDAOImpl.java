@@ -41,30 +41,6 @@ public class RentalDAOImpl implements RentalDAO {
      * DBUtils 的 BeanListHandler 可以通过别名自动映射嵌套对象。
      * @return 包含完整租赁信息（包括房屋和用户信息）的列表
      */
-//    @Override
-//    public List<Rental> getAllRentals() {
-//        // 假设:
-//        // 1. 有一个名为 'houses' 的表，主键为 'id'。
-//        // 2. 有一个名为 'users' 的表，主键为 'username'。
-//        // 3. House类有 setAddress, setDescription, setPrice 等方法。
-//        // 4. User类有 setEmail, setGender 等方法。
-//        // 列别名 "house.address" 会让 DBUtils 寻找 rental.getHouse().setAddress(...) 来赋值。
-//        String sql = "SELECT " +
-//                "r.id, r.house_id AS houseId, r.username, r.rental_date AS rentalDate, " +
-//                "h.address AS \"house.address\", h.price AS \"house.price\", h.description AS \"house.description\", " +
-//                "u.email AS \"user.email\", u.gender AS \"user.gender\" " +
-//                "FROM rentals r " +
-//                "LEFT JOIN houses h ON r.house_id = h.id " +
-//                "LEFT JOIN users u ON r.username = u.username " +
-//                "ORDER BY r.rental_date DESC";
-//        try {
-//            // BeanListHandler 会自动创建 Rental, House, User 对象并填充数据
-//            return queryRunner.query(sql, new BeanListHandler<>(Rental.class));
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            return Collections.emptyList();
-//        }
-//    }
     @Override
     public List<Rental> getAllRentals() {
         // 修正SQL，确保查询了所有需要的字段，为手动映射做准备

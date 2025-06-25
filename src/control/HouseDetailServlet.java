@@ -18,26 +18,25 @@ public class HouseDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            // 1. ´ÓÇëÇóµÄ URL ²ÎÊıÖĞ»ñÈ¡·¿Ô´ ID
+
             int houseId = Integer.parseInt(request.getParameter("id"));
 
-            // 2. ´ÓÊı¾İ¿âÖĞ»ñÈ¡ÍêÕûµÄ·¿Ô´ÏêÇé
-            // (ÇëÈ·±£ findHouseById ·½·¨ÒÑÌí¼Óµ½ HouseDAO ½Ó¿Ú²¢ÔÚ HouseDAOImpl ÖĞÊµÏÖ)
+
             House house = ((HouseDAOImpl) houseDAO).findHouseById(houseId);
 
             if (house != null) {
-                // 3. ½«ÕÒµ½µÄ·¿Ô´¶ÔÏóÉèÖÃÎªÇëÇóÊôĞÔ
+
                 request.setAttribute("house", house);
 
-                // 4. ½«ÇëÇó×ª·¢µ½ detail.jsp Ò³Ãæ½øĞĞäÖÈ¾
+
                 request.getRequestDispatcher("/rental/detail.jsp").forward(request, response);
             } else {
-                // ´¦ÀíÎ´ÕÒµ½Ö¸¶¨IDµÄ·¿Ô´µÄÇé¿ö
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "±§Ç¸£¬ÄúÇëÇóµÄ·¿Ô´Î´ÕÒµ½¡£");
+
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½Ô´Î´ï¿½Òµï¿½ï¿½ï¿½");
             }
         } catch (NumberFormatException e) {
-            // ´¦Àí ID ²ÎÊı²»ÊÇÓĞĞ§Êı×ÖµÄÇé¿ö
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ÎŞĞ§µÄ·¿Ô´ID¸ñÊ½¡£");
+
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ï¿½ï¿½Ğ§ï¿½Ä·ï¿½Ô´IDï¿½ï¿½Ê½ï¿½ï¿½");
         }
     }
 }

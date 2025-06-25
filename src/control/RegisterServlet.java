@@ -1,6 +1,8 @@
 package control;
 
-import dDao.Dao;
+//import dDao.Dao;
+//import dao.UserDao;
+//import dao.UserDaoImpl;
 import model.User;
 import service.UserService;
 import service.UserServiceImp;
@@ -15,7 +17,8 @@ import java.time.LocalDateTime;
 @WebServlet("/Lzs_register")
 public class RegisterServlet extends HttpServlet {
     private final UserService userService = new UserServiceImp();
-    private final Dao DDao =new Dao();
+//    private final Dao DDao =new Dao();
+//    private final UserDao userdao = new UserDaoImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

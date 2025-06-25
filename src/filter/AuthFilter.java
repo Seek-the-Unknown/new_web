@@ -25,7 +25,9 @@ public class AuthFilter implements Filter {
             "/rental/detail.jsp",// 商品详情页 (假设存在)
             "/shop/style.css",   // 商城样式文件 (根据你的项目结构调整)
             "/css/",             // 允许访问整个css文件夹下的资源
-            "/images/"           // 允许访问整个images文件夹下的资源
+            "/images/",           // 允许访问整个images文件夹下的资源
+            "/forgotPassword.jsp",
+            "/resetPassword"
             // 根据需要添加其他公共静态资源，如JS文件
     );
 

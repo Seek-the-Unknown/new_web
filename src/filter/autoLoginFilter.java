@@ -65,7 +65,7 @@ public class autoLoginFilter implements Filter {
                 // Cookie验证成功，创建新的session并设置登录状态
                 session = request.getSession(true); // 获取或创建session
                 session.setAttribute("currentUser", user);
-                System.out.println("AutoLoginFilter: 用户 " + username + " 通过cookie自动登录成功。");
+                System.out.println("AutoLoginFilter：用户" + username + " 通过cookie自动登录成功。");
             } else {
                 // Cookie无效或已过期，清除它们
                 Cookie userCookie = new Cookie("rememberedUser", "");

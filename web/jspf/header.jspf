@@ -35,15 +35,15 @@
 
 <nav class="top-nav">
     <div class="nav-left">
-        <span class="language-selector">中文</span>
-        <a href="${pageContext.request.contextPath}/" class="logo">公寓租房网</a>
+        <span class="language-selector">Chinese</span>
+        <a href="${pageContext.request.contextPath}/" class="logo">Freedom</a>
     </div>
     <div class="nav-right">
         <%-- 根据用户登录状态，动态显示链接 --%>
         <c:choose>
             <c:when test="${not empty sessionScope.currentUser}">
                 <span>欢迎, <c:out value="${sessionScope.currentUser.username}"/>!</span>
-                <a href="${pageContext.request.contextPath}/admin/manage" class="nav-link">管理中心</a>
+                <a href="${pageContext.request.contextPath}/user/profile" class = "nav-link">个人中心</a>
                 <a href="${pageContext.request.contextPath}/logout" class="nav-link">退出登录</a>
             </c:when>
             <c:otherwise>

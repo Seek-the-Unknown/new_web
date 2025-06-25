@@ -12,7 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-// ½«Õâ¸öServletÓ³Éäµ½Ó¦ÓÃµÄ¸ùÂ·¾¶
+
+/**
+ * é¦–é¡µå±•ç¤ºæ§åˆ¶å™¨
+ * å¤„ç†ç½‘ç«™æ ¹è·¯å¾„è¯·æ±‚ï¼Œå±•ç¤ºå¯ç§Ÿæˆ¿æºä¿¡æ¯
+ * 
+ * ä¸šåŠ¡æµç¨‹ï¼š
+ * 1. è°ƒç”¨HouseDAOè·å–æ‰€æœ‰å¯ç§Ÿæˆ¿æº
+ * 2. å°†æ•°æ®å­˜å…¥requestä½œç”¨åŸŸ
+ * 3. è½¬å‘åˆ°é¦–é¡µJSPè§†å›¾
+ */
 @WebServlet("")
 public class HomeServlet extends HttpServlet {
     private final HouseDAO houseDAO = new HouseDAOImpl();
@@ -20,20 +29,19 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            // 1. µ÷ÓÃÎÒÃÇÖ®Ç°Éè¼ÆµÄ getAvailableHouses ·½·¨
-            //    (ÇëÈ·±£ÄúÒÑ¾­ÔÚHouseDAOImplÖĞÊµÏÖÁË´Ë·½·¨)
+
             List<House> availableHouses = houseDAO.getAvailableHouses();
 
-            // 2. ½«¿É×â·¿Ô´ÁĞ±í´æÈërequestÖĞ
+
             request.setAttribute("availableHouseList", availableHouses);
 
-            // 3. ×ª·¢µ½ÄúµÄJSPÒ³Ãæ½øĞĞÏÔÊ¾
+
             request.getRequestDispatcher("/rental/index.jsp").forward(request, response);
 
         } catch (Exception e) {
             e.printStackTrace();
-            // ¿ÉÒÔÔÚÕâÀï×ª·¢µ½Ò»¸ö´íÎóÒ³Ãæ
-            response.getWriter().println("¼ÓÔØ·¿Ô´ĞÅÏ¢Ê±³ö´í¡£");
+
+            response.getWriter().println("ï¿½ï¿½ï¿½Ø·ï¿½Ô´ï¿½ï¿½Ï¢Ê±ï¿½ï¿½ï¿½ï¿½");
         }
     }
 }

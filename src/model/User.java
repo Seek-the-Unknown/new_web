@@ -6,6 +6,7 @@ public class User {
     private String email;
     private String gender;
     private LocalDateTime lastLoginTime;
+    private double balance;
     // 无参构造
     public User() {}
 
@@ -36,6 +37,8 @@ public class User {
     public LocalDateTime getLastLoginTime() { return lastLoginTime; }
     public void setLastLoginTime(LocalDateTime lastLoginTime) { this.lastLoginTime = lastLoginTime; }
 
+    public double getBalance() { return balance; }
+    public void setBalance(double balance) { this.balance = balance; }
     @Override
     public String toString() {
         return "User{" +
