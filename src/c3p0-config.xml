@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+    <!--     默认配置 -->
+    <default-config>
+        <!-- 获取连接需提供的4个基本信息 -->
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/web</property>
+        <property name="user">root</property>
+        <property name="password">123456</property>
+        <!-- 初始化时获取连接个数，取值应在minPoolSize与maxPoolSize之间 -->
+        <property name="initialPoolSize">10</property>
+        <!-- 连接池中保留的最大连接数 -->
+        <property name="maxPoolSize">100</property>
+        <!-- 连接池中保留的最小连接数 -->
+        <property name="minPoolSize">10</property>
+        <!-- 最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃 -->
+        <property name="maxIdleTime">60</property>
+        <!-- 定义在从数据库获取新连接失败后重复尝试的次数 -->
+        <property name="acquireRetryAttempts">5</property>
+        <!-- 定义数据源内维护的最大Statements数量 -->
+        <property name="maxStatements">50</property>
+        <!-- 定义连接池内单个连接所拥有的最大缓存statements数 -->
+        <property name="maxStatementsPerConnection">5</property>
+    </default-config>
+    <!--     命名配置 -->
+    <name-config name="MySqlDs">
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/web</property>
+        <property name="user">root</property>
+        <property name="password">123456</property>
+        <property name="initialPoolSize">5</property>
+        <property name="maxPoolSize">20</property>
+        <property name="minPoolSize">3</property>
+        <property name="maxIdleTime">150</property>
+        <property name="acquireRetryAttempts">1</property>
+        <property name="maxStatements">30</property>
+    </name-config>
+</c3p0-config>

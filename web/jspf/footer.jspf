@@ -1,0 +1,51 @@
+<%-- /web/WEB-INF/jspf/footer.jspf --%>
+<%@ page  pageEncoding="UTF-8"%>
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>关于我们</h3>
+            <ul>
+                <li><a href="#">公司简介</a></li>
+                <li><a href="#">团队介绍</a></li>
+                <li><a href="#">加入我们</a></li>
+                <li><a href="#">新闻中心</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>帮助中心</h3>
+            <ul>
+                <li><a href="#">常见问题</a></li>
+                <li><a href="#">租房指南</a></li>
+                <li><a href="#">房东指南</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>服务条款</h3>
+            <ul>
+                <li><a href="#">用户协议</a></li>
+                <li><a href="#">隐私政策</a></li>
+                <li><a href="#">免责声明</a></li>
+                <li><a href="#">投诉建议</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>关注我们</h3>
+            <p>订阅我们的新闻通讯，获取最新房源信息</p>
+
+            <div class="social-links">
+                <a href="#"><i class="fab fa-weixin"></i></a>
+                <a href="#"><i class="fab fa-weibo"></i></a>
+                <a href="#"><i class="fab fa-qq"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2025 公寓租房网 版权所有 | 京ICP备12345678号</p>
+
+    </div>
+</footer>
+
+</body>
+</html>
